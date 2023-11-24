@@ -1,0 +1,95 @@
+﻿@model MascotaViewModel
+
+@{
+    string header = "Create";
+    if (Model.Mascota.IdMascota > 0)
+    {
+        header = "Editar";
+    }
+
+    ViewData["Title"] = string.Join(header, " Mascota");
+}
+
+<div style="max-width: 1200px; margin: 20px auto; padding: 5px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>@header Mascota</h1>
+        </div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <fieldset>
+                <legend>Información de la Mascota</legend>
+                <input type="hidden" asp-for="Mascota.IdMascota" />
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Mascota.Nombre"></label>
+                        <input type="text" asp-for="Mascota.Nombre"
+                               class="form-control" placeholder="Nombre de la mascota" aria-describedby="NameHelp" />
+                        <small id="NameHelp" class="form-text text-muted">Nombre de la mascota</small>
+                        <span asp-validation-for="Mascota.Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Mascota.Raza"></label>
+                        <input type="text" asp-for="Mascota.Raza"
+                               class="form-control" placeholder="Surnames" aria-describedby="SurnameHelp" />
+                        <small id="SurnameHelp" class="form-text text-muted">Raza</small>
+                        <span asp-validation-for="Mascota.Raza" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Mascota.IdDueno"></label>
+                        <input type="text" asp-for="Mascota.IdDueno"
+                               class="form-control" placeholder="Id del Dueño" aria-describedby="IdDuenoHelp" />
+                        <small id="IdDuenoHelp" class="form-text text-muted">Id del Dueño</small>
+                        <span asp-validation-for="Mascota.IdDueno" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="return Cancel();">
+                            <i class="fa-solid fa-circle-chevron-left"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    function Cancel() {
+        swal
+            (
+                {
+                    title: "Mascota Information",
+                    text: "Are you sure to cancel?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }
+            ).then
+            (
+                (cancel) => {
+                    if (cancel) {
+                        location.href = '/Mascota';
+                    }
+                }
+            );
+    }
+</script>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

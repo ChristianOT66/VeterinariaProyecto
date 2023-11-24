@@ -1,0 +1,108 @@
+﻿@model DuenoViewModel
+
+@{
+    string header = "Create";
+    if (Model.Dueno.IdDueno > 0)
+    {
+        header = "Editar";
+    }
+
+    ViewData["Title"] = string.Join(header, " Dueno");
+}
+
+<div style="max-width: 1200px; margin: 20px auto; padding: 5px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>@header Dueño</h1>
+        </div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <fieldset>
+                <legend>Información del Dueño</legend>
+                <input type="hidden" asp-for="Dueno.IdDueno" />
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Dueno.Nombre"></label>
+                        <input type="text" asp-for="Dueno.Nombre"
+                               class="form-control" placeholder="Nombre del dueño" aria-describedby="NameHelp" />
+                        <small id="NameHelp" class="form-text text-muted">Nombre del dueño</small>
+                        <span asp-validation-for="Dueno.Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Dueno.Apellido"></label>
+                        <input type="text" asp-for="Dueno.Apellido"
+                               class="form-control" placeholder="Apellidos" aria-describedby="SurnameHelp" />
+                        <small id="SurnameHelp" class="form-text text-muted">Apellidos</small>
+                        <span asp-validation-for="Dueno.Apellido" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Dueno.Cedula"></label>
+                        <input type="text" asp-for="Dueno.Cedula"
+                               class="form-control" placeholder="Cedula" aria-describedby="CedulaHelp" />
+                        <small id="CedulaHelp" class="form-text text-muted">Cedula</small>
+                        <span asp-validation-for="Dueno.Cedula" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label asp-for="Dueno.Correo"></label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="EmailLabel">@@</span>
+                            <input type="text" asp-for="Dueno.Correo"
+                                   class="form-control" placeholder="Correo electrónico"
+                                   aria-label="EmailLabel" aria-describedby="EmailHelp" />
+                        </div>
+                        <small id="EmailHelp" class="form-text text-muted">Correo electrónico</small>
+                        <span asp-validation-for="Dueno.Correo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="return Cancel();">
+                            <i class="fa-solid fa-circle-chevron-left"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    function Cancel() {
+        swal
+            (
+                {
+                    title: "Dueno Information",
+                    text: "Are you sure to cancel?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }
+            ).then
+            (
+                (cancel) => {
+                    if (cancel) {
+                        location.href = '/Dueno';
+                    }
+                }
+            );
+    }
+</script>
+
+@section Scripts
+    {
+        <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,108 @@
+﻿@model HistorialViewModel
+
+@{
+    string header = "Create";
+    if (Model.Historial.IdHistorial > 0)
+    {
+        header = "Editar";
+    }
+
+    ViewData["Title"] = string.Join(header, " Historial");
+}
+
+<div style="max-width: 1200px; margin: 20px auto; padding: 5px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>@header Historial</h1>
+        </div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <fieldset>
+                <legend>Información del Historial</legend>
+                <input type="hidden" asp-for="Historial.IdHistorial" />
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Historial.Diagnostico"></label>
+                        <input type="text" asp-for="Historial.Diagnostico"
+                               class="form-control" placeholder="Diagnostico" aria-describedby="DiagnosticoHelp" />
+                        <small id="NameHelp" class="form-text text-muted">Diagnostico</small>
+                        <span asp-validation-for="Historial.Diagnostico" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Historial.IdVeterinario"></label>
+                        <input type="text" asp-for="Historial.IdVeterinario"
+                               class="form-control" placeholder="Surnames" aria-describedby="IdVeterinarioHelp" />
+                        <small id="SurnameHelp" class="form-text text-muted">Id del Veterinario</small>
+                        <span asp-validation-for="Historial.IdVeterinario" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Historial.MotivoConsulta"></label>
+                        <input type="text" asp-for="Historial.MotivoConsulta"
+                               class="form-control" placeholder="Motivo de Consulta" aria-describedby="MotivoConsultaHelp" />
+                        <small id="MotivoConsultaHelp" class="form-text text-muted">Motivo de Consulta</small>
+                        <span asp-validation-for="Historial.MotivoConsulta" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Historial.Fecha"></label>
+                        <input type="date" asp-for="Historial.Fecha"
+                               class="form-control" placeholder="Motivo de Consulta" aria-describedby="FechaHelp" />
+                        <small id="MotivoConsultaHelp" class="form-text text-muted">Fecha</small>
+                        <span asp-validation-for="Historial.Fecha" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="return Cancel();">
+                            <i class="fa-solid fa-circle-chevron-left"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    function Cancel() {
+        swal
+            (
+                {
+                    title: "Historial Information",
+                    text: "Are you sure to cancel?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }
+            ).then
+            (
+                (cancel) => {
+                    if (cancel) {
+                        location.href = '/Historial';
+                    }
+                }
+            );
+    }
+</script>
+
+@section Scripts
+    {
+        <partial name="_ValidationScriptsPartial" />
+}

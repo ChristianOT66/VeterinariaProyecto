@@ -1,0 +1,82 @@
+﻿@model Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/css/nicepage.css" />
+</head>
+
+<style>
+    body {
+            background-image: url("../img/fondoPagina.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin-bottom: 0px;
+            display:flex;
+            flex-direction:column;
+            min-height:100%;
+
+          }
+
+
+footer{
+	margin-top:auto;
+
+
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: ##4bb629;
+    border-color: #1861ac00;
+}
+
+</style>
+
+<body>
+
+    @*------ GOOGLEAR ====> form bootstrap 5 ----------------*@
+
+    <div class="row mt-5">
+        <div class="col-sm-4 offset-sm-4">
+
+         <form asp-controller="Acceso" asp-action="Index" method="post">
+             <h1>Iniciar Sesión</h1>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" asp-for="Correo">
+                @*<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>*@
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" asp-for="Clave">
+              </div>
+             @* <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>*@
+              <button type="submit" class="btn btn-primary" style="background-color:red">Ingresar</button>
+        </form>
+
+
+        </div>
+    </div>
+
+  
+
+</body>
+
+<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-ee65"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Proyecto elabolarado para Universidad Fidelitas. Curso: Programación Avanzada en Web.</p>
+      </div></footer>
+
+   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>

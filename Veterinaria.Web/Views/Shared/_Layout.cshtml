@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Veterinaria</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/css/nicepage.css" />
+	<script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.1.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Casa">
+    <meta property="og:type" content="website">
+
+
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+		  data-rocket-async="style" as="style"
+		  onload="this.onload=null;this.rel='stylesheet'" />
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/b4bbf55a6d.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+	.mb-3, .my-3 {
+    margin-bottom: 0rem!important;
+    margin-left: 0rem!important;
+
+}
+
+.pb-3, .py-3 {
+    padding-bottom: 0rem!important;
+	margin-left: 0rem!important;
+}
+
+body {
+            background-image: url("../img/fondoPagina.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+          }
+
+.bg-white {
+    background-color: #19c8de!important;
+}
+
+
+header{
+background-color: red !important;
+}
+
+footer{
+	margin-top:auto;
+}
+
+.card{
+	background-color: #fff;
+	border-radius: 0.8rem;
+
+}
+
+</style>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+			<div class="container">
+				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="https://i.ibb.co/BfScCzj/logo.png" alt="Veterinaria Fide" style="height:40px"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+					<ul class="navbar-nav flex-grow-1">
+
+
+
+						<li class="nav-item">
+							<a class="nav-link text-dark"
+							   asp-area="" asp-controller="Veterinario" asp-action="Index">
+								<i class="fa-solid fa-user-doctor"></i> Veterinarios
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark"
+							   asp-area="" asp-controller="Cita" asp-action="Index">
+								<i class="fa-solid fa-calendar-check"></i> Citas
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark"
+							   asp-area="" asp-controller="Dueno" asp-action="Index">
+								<i class="fa-solid fa-person"></i> Dueños
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark"
+							   asp-area="" asp-controller="Mascota" asp-action="Index">
+								<i class="fa-solid fa-dog"></i> Mascotas
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-dark"
+							   asp-area="" asp-controller="Historial" asp-action="Index">
+								<i class="fa-sharp fa-solid fa-clock-rotate-left"></i> Historiales
+							</a>
+						</li>
+
+
+						<li class="nav-item ml-auto" >
+							<a class="nav-link text-dark"
+							   asp-area="" asp-controller="Acceso" asp-action="Salir">
+								<i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+							</a>
+						</li>
+
+
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-ee65"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Proyecto elabolarado para Universidad Fidelitas. Curso: Programación Avanzada en Web.</p>
+      </div></footer>
+
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

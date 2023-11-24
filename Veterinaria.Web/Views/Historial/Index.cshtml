@@ -1,0 +1,29 @@
+﻿@model List<HistorialInputModel>
+
+<div style="max-width: 1200px; margin: 20px auto; padding: 5px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>Historiales</h1>
+        </div>
+        <div class="row">
+            @foreach (var historial in Model)
+            {
+                <div class="card col-lg-4 col-md-6 col-sm-12" style="margin-left: 15px; margin-top: 15px">
+                    <div class="card-header">Diagnostico: @historial.Diagnostico</div>
+                    <div class="card-body">
+                        <img class="card-img" alt="@historial.Diagnostico" src=~/img/historial.jpg />
+                    </div>
+                    <div class="card-footer">
+                        <a id="edit" class="btn btn-outline-info"
+                       asp-action="Upsert" asp-route-id="@historial.IdHistorial">
+                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                        </a>
+                        <button type="button" id="delete" class="btn btn-outline-danger">
+                            <i class="fa-solid fa-person-circle-minus"></i> Borrar
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

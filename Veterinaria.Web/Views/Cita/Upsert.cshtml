@@ -1,0 +1,98 @@
+﻿@model CitaViewModel
+
+@{
+    string header = "Crear";
+
+    if (Model.Cita.IdCita > 0)
+    {
+        header = "Editar";
+    }
+
+    ViewData["Title"] = string.Join(header, " Cita");
+}
+ 
+
+<div style="max-width: 1200px; margin: 20px auto; padding: 5px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>@header Cita</h1>
+        </div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <fieldset>
+                <legend>Información de la Cita Information</legend>
+                <input type="hidden" asp-for="Cita.IdCita" />
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Cita.Fecha"></label>
+                        <input type="date" asp-for="Cita.Fecha"
+                               class="form-control" placeholder="Fecha de la cita" aria-describedby="FechaHelp" />
+                        <small id="FechaHelp" class="form-text text-muted">Fecha de la cita</small>
+                        <span asp-validation-for="Cita.Fecha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Cita.IdVeterinario"></label>
+                        <input type="text" asp-for="Cita.IdVeterinario"
+                               class="form-control" placeholder="Id del Veterinario" aria-describedby="SurFechaHelp" />
+                        <small id="SurFechaHelp" class="form-text text-muted">Id del Veterinario</small>
+                        <span asp-validation-for="Cita.IdVeterinario" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6 col-sm-12">
+                        <label asp-for="Cita.IdDueno"></label>
+                        <input type="text" asp-for="Cita.IdDueno"
+                               class="form-control" placeholder="Id del Dueño" aria-describedby="IdDuenoHelp" />
+                        <small id="IdDuenoHelp" class="form-text text-muted">Id del Dueño</small>
+                        <span asp-validation-for="Cita.IdDueno" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                
+
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-outline-primary">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="return Cancel();">
+                            <i class="fa-solid fa-circle-chevron-left"></i> Cancelar
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script>
+    function Cancel() {
+        swal
+            (
+                {
+                    title: "Cita Information",
+                    text: "Are you sure to cancel?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }
+            ).then
+            (
+                (cancel) => {
+                    if (cancel) {
+                        location.href = '/Cita';
+                    }
+                }
+            );
+    }
+</script>
+
+@section Scripts
+    {
+    <partial Fecha="_ValidationScriptsPartial" />
+}

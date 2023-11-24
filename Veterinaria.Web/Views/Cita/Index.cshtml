@@ -1,0 +1,41 @@
+﻿@model List<CitaInputModel>
+
+
+<div style="max-width: 1200px; margin: 20px auto; padding: 5px;">
+    <div class="container-fluid">
+        <div class="text-center">
+            <h1>Citas</h1>
+        </div>
+
+        <div class="card col-lg-4 col-md-6 col-sm-12">
+            <a id="create" class="btn btn-outline-info"
+               asp-action="Upsert">
+                <i class="fa-solid fa-pen-to-square"></i> Crear Cita
+            </a>
+
+        </div>
+        <br />
+
+        <div class="row">
+            @foreach (var cita in Model)
+            {
+                <div class="card col-lg-4 col-md-6 col-sm-12" style="margin-left: 15px; margin-top: 15px">
+                    <div class="card-header">Cita para el dia: @cita.Fecha</div>
+                    <div class="card-body">
+                        <img class="card-img" alt="@cita.Fecha" src=~/img/cita.png />
+                    </div>
+                    <div class="card-footer">
+                        <a id="edit" class="btn btn-outline-info"
+                       asp-action="Upsert" asp-route-id="@cita.IdCita">
+                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                        </a>
+                        <button id="delete" class="btn btn-outline-danger"
+                        asp-action="Upsert" asp-route-id="@cita.IdCita">
+                            <i class="fa-solid fa-person-circle-minus"></i> Borrar
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
